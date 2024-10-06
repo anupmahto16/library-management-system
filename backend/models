@@ -1,0 +1,13 @@
+const mongooese = require('mongoose');
+
+const UserSchema = new mongooese.Schema({
+    username:{type:String,Unique:true,required:true},
+    password:{ type: String, required:true},
+    role : {type: String, enum: ['Admin','Member'], required:true},
+    name: {type:String, required:true},
+    email: {type:String, Unique:true, required:true},
+    borrowedBooks :[{type:mongooese.Schema.Types.ObjectId,ref:'Book'}],
+},{timestamps:true});
+
+modeule.exports = mongoose.model('User',UserSchema);
+
